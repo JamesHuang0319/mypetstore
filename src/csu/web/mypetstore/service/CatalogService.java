@@ -1,8 +1,8 @@
 package csu.web.mypetstore.service;
 
-import csu.web.mypetstore.domian.Category;
-import csu.web.mypetstore.domian.Item;
-import csu.web.mypetstore.domian.Product;
+import csu.web.mypetstore.domain.Category;
+import csu.web.mypetstore.domain.Item;
+import csu.web.mypetstore.domain.Product;
 import csu.web.mypetstore.persistence.CategoryDao;
 import csu.web.mypetstore.persistence.ItemDao;
 import csu.web.mypetstore.persistence.ProductDao;

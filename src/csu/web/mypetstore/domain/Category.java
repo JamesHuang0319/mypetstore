@@ -1,28 +1,20 @@
-package csu.web.mypetstore.domian;
+package csu.web.mypetstore.domain;
 
 import java.io.Serializable;
 
-public class Product implements Serializable {
-    private static final long serialVersionUID = -7492639752670189553L;
-    private String productId;
+public class Category implements Serializable {
+    private static final long serialVersionUID = 3992469837058393712L;
+
     private String categoryId;
     private String name;
     private String description;
-
-    public String getProductId() {
-        return productId;
-    }
-
-    public void setProductId(String productId) {
-        this.productId = productId.trim();
-    }
 
     public String getCategoryId() {
         return categoryId;
     }
 
     public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+        this.categoryId = categoryId.trim();
     }
 
     public String getName() {
@@ -42,6 +34,6 @@ public class Product implements Serializable {
     }
 
     public String toString() {
-        return getName();
+        return getCategoryId();
     }
 }

@@ -1,6 +1,6 @@
 package csu.web.mypetstore.persistence.impl;
 
-import csu.web.mypetstore.domian.Category;
+import csu.web.mypetstore.domain.Category;
 import csu.web.mypetstore.persistence.CategoryDao;
 import csu.web.mypetstore.persistence.DBUtil;
 

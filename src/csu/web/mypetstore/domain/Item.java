@@ -1,4 +1,4 @@
-package csu.web.mypetstore.domian;
+package csu.web.mypetstore.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

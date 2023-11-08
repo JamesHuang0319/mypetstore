@@ -1,6 +1,6 @@
 package csu.web.mypetstore.web.servlet;
 
-import csu.web.mypetstore.domain.Category;
+import csu.web.mypetstore.domain.Item;
 import csu.web.mypetstore.domain.Product;
 import csu.web.mypetstore.service.CatalogService;
 
@@ -12,19 +12,19 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-public class CategoryFormServlet extends HttpServlet{
+public class ProductFormServlet extends HttpServlet {
     private CatalogService catalogService;
 
-    private static final String CATEGORY_FORM = "/WEB-INF/jsp/catalog/category.jsp";
+    private static final String PRODUCT_FORM = "/WEB-INF/jsp/catalog/product.jsp";
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String categoryId = req.getParameter("categoryId");
+        String productID = req.getParameter("productId");
         catalogService = new CatalogService();
-        Category category = catalogService.getCategory(categoryId);
-        List<Product> productList = catalogService.getProductListByCategory(categoryId);
+        Product product = catalogService.getProduct(productID);
+        List<Item> itemList = catalogService.getItemListByProduct(productID);
         HttpSession session = req.getSession();
-        session.setAttribute("category" , category);
-        session.setAttribute("productList" , productList);
-        req.getRequestDispatcher(CATEGORY_FORM).forward(req,resp);
+        session.setAttribute("product" , product);
+        session.setAttribute("itemList" , itemList);
+        req.getRequestDispatcher(PRODUCT_FORM).forward(req,resp);
     }
 }

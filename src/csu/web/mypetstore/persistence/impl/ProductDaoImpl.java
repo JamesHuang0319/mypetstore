@@ -1,12 +1,12 @@
 package csu.web.mypetstore.persistence.impl;
 
-import csu.web.mypetstore.domian.Product;
+import csu.web.mypetstore.domain.Product;
 import csu.web.mypetstore.persistence.DBUtil;
 import csu.web.mypetstore.persistence.ProductDao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,22 +22,72 @@ public class ProductDaoImpl implements ProductDao {
         List<Product> productList = new ArrayList<>();
         try{
             Connection connection = DBUtil.getConnection();
-            Statement statement = connection.createStatement();
-
-
+            PreparedStatement preparedStatement = connection.prepareStatement(getProductListByCategoryString);
+            preparedStatement.setString(1,categoryId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                Product product = new Product();
+                product.setProductId(resultSet.getString(1));
+                product.setName(resultSet.getString(2));
+                product.setDescription(resultSet.getString(3));
+                product.setCategoryId(resultSet.getString(4));
+                productList.add(product);
+            }
+            DBUtil.closeResultSet(resultSet);
+            DBUtil.closePreparedStatement(preparedStatement);
+            DBUtil.closeConnection(connection);
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return productList;
     }
 
     @Override
     public Product getProduct(String productId) {
-        return null;
+        Product product = null;
+        try{
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(getProductString);
+            preparedStatement.setString(1,productId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if(resultSet.next()){
+                product = new Product();
+                product.setProductId(resultSet.getString(1));
+                product.setName(resultSet.getString(2));
+                product.setDescription(resultSet.getString(3));
+                product.setCategoryId(resultSet.getString(4));
+            }
+            DBUtil.closeResultSet(resultSet);
+            DBUtil.closePreparedStatement(preparedStatement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return product;
     }
 
     @Override
     public List<Product> searchProductList(String keywords) {
-        return null;
+        List<Product> productList = new ArrayList<>();
+        try{
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(searchProductListString);
+            preparedStatement.setString(1,keywords);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                Product product = new Product();
+                product.setProductId(resultSet.getString(1));
+                product.setName(resultSet.getString(2));
+                product.setDescription(resultSet.getString(3));
+                product.setCategoryId(resultSet.getString(4));
+                productList.add(product);
+            }
+            DBUtil.closeResultSet(resultSet);
+            DBUtil.closePreparedStatement(preparedStatement);
+            DBUtil.closeConnection(connection);
+        }catch (Exception e){
+        e.printStackTrace();
+        }
+        return productList;
     }
 }
