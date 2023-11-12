@@ -22,6 +22,7 @@ public class ProductFormServlet extends HttpServlet {
         catalogService = new CatalogService();
         Product product = catalogService.getProduct(productID);
         List<Item> itemList = catalogService.getItemListByProduct(productID);
+
         HttpSession session = req.getSession();
         session.setAttribute("product" , product);
         session.setAttribute("itemList" , itemList);

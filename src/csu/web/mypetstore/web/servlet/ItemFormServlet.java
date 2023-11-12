@@ -24,6 +24,7 @@ public class ItemFormServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         session.setAttribute("product", product);
+        //有漏洞建议改成request 实验一 5  45mins
         session.setAttribute("item", item);
         req.getRequestDispatcher(ITEM_FORM).forward(req, resp);
     }

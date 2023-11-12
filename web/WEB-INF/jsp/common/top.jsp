@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 
 <html>
-
 <head>
     <title>MyPetStore</title>
     <link rel="StyleSheet" href="css/mypetstore.css" type="text/css" media="screen" />
