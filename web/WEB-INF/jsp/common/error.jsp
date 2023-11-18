@@ -1,6 +1,6 @@
 <%@ include file="../common/top.jsp"%>
 
-<c:out value="${sessionScope.errorMsg}"></c:out>
+${sessionScope.message}
 
 <%@ include file="../common/bottom.jsp"%>
 

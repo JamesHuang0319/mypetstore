@@ -1,9 +1,9 @@
 
 <%@ include file="../common/top.jsp"%>
 
-<div id="BackLink"><stripes:link
-        beanclass="org.mybatis.jpetstore.web.actions.CatalogActionBean">
-    Return to Main Menu</stripes:link></div>
+<div id="BackLink">
+    <a href="mainForm">Return to Main Menu</a>
+</div>
 
 <div id="Catalog">
 
@@ -55,7 +55,10 @@
                 <tr>
                     <td colspan="7">
                         Sub Total: <fmt:formatNumber value="${sessionScope.cart.subTotal}" pattern="$#,##0.00" />
-                        <input type="submit" value="Update Cart">
+                        <c:if test="${sessionScope.cart.numberOfItems > 0}">
+                            <input type="submit" value="Update Cart">
+                        </c:if>
+
                     </td>
                     <td>&nbsp;</td>
                 </tr>

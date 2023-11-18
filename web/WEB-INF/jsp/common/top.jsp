@@ -28,9 +28,9 @@
                 </c:if>
 
                 <c:if test="${sessionScope.loginAccount != null}">
-                    <a href="#">Sign Out</a>
+                    <a href="signOff">Sign Out</a>
                     <img align="middle" src="images/separator.gif" />
-                    <a href="#"> My Account</a>
+                    <a href="editAccount"> My Account</a>
                     <img align="middle" src="images/separator.gif" />
                 </c:if>
                 <a href="help.html">?</a>
@@ -39,7 +39,7 @@
 
         <div id="Search">
             <div id="SearchContent">
-                <form action="" method="post">
+                <form action="searchProduct" method="post">
                     <input type="text" name="keyword" size="14">
                     <input type="submit" value="Search">
                 </form>

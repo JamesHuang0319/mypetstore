@@ -13,19 +13,23 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-public class SignOnFormServlet extends HttpServlet {
-    private static final String SIGN_ON_FORM = "/WEB-INF/jsp/account/signon.jsp";
-    private Account account;
+public class SearchProductServlet extends HttpServlet {
+    private static final String SEARCH_PRODUCTS = "/WEB-INF/jsp/catalog/searchProducts.jsp";
 
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doGet(req, resp);
-    }
-
+    private String keyword;
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        keyword = req.getParameter("keyword");
+        //request.setAttribute("keyword", keyword);
+        CatalogService service = new CatalogService();
+        List<Product> productList = service.searchProductList(keyword);
+
+        //保存数据
         HttpSession session = req.getSession();
-        account = (Account)session.getAttribute("loginAccount");
+        session.setAttribute("keyword", keyword);
+        session.setAttribute("productList", productList);
+
+        Account account = (Account)session.getAttribute("account");
 
         if(account != null){
             HttpServletRequest httpRequest= req;
@@ -33,10 +37,16 @@ public class SignOnFormServlet extends HttpServlet {
                     + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());
 
             LogService logService = new LogService();
-            String logInfo = logService.logInfo(" ") + strBackUrl + " 用户进入登录界面";
+            String logInfo = logService.logInfo(" ") + strBackUrl + " 查找商品" + "  " + productList;
             logService.insertLogInfo(account.getUsername(), logInfo);
         }
-        //源代码
-        req.getRequestDispatcher(SIGN_ON_FORM).forward(req, resp);
+
+        //跳转页面
+        req.getRequestDispatcher(SEARCH_PRODUCTS).forward(req, resp);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        doGet(req, resp);
     }
 }

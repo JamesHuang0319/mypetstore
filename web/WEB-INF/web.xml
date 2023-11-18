@@ -76,6 +76,7 @@
             <url-pattern>/cartForm</url-pattern>
         </servlet-mapping>
 
+        <!--登录跳转配置-->
         <servlet>
             <servlet-name>SignOnFormServlet</servlet-name>
             <servlet-class>csu.web.mypetstore.web.servlet.SignOnFormServlet</servlet-class>
@@ -85,6 +86,7 @@
             <url-pattern>/signonForm</url-pattern>
         </servlet-mapping>
 
+        <!--登录配置-->
         <servlet>
             <servlet-name>SignOnServlet</servlet-name>
             <servlet-class>csu.web.mypetstore.web.servlet.SignOnServlet</servlet-class>
@@ -102,4 +104,83 @@
             <servlet-name>NewOrderFormServlet</servlet-name>
             <url-pattern>/newOrderForm</url-pattern>
         </servlet-mapping>
+
+        <!--注册表单-->
+        <servlet>
+            <servlet-name>NewAccountFormServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.NewAccountFormServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>NewAccountFormServlet</servlet-name>
+            <url-pattern>/newAccountForm</url-pattern>
+        </servlet-mapping>
+
+        <!--注册-->
+        <servlet>
+            <servlet-name>NewAccountServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.NewAccountServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>NewAccountServlet</servlet-name>
+            <url-pattern>/newAccount</url-pattern>
+        </servlet-mapping>
+
+        <!--登出账户-->
+        <servlet>
+            <servlet-name>SignOffServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.SignOffServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>SignOffServlet</servlet-name>
+            <url-pattern>/signOff</url-pattern>
+        </servlet-mapping>
+
+        <!--编辑账户信息-->
+        <servlet>
+            <servlet-name>EditAccountServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.EditAccountServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>EditAccountServlet</servlet-name>
+            <url-pattern>/editAccount</url-pattern>
+        </servlet-mapping>
+
+        <!--验证码设置-->
+        <servlet>
+            <servlet-name>VerificationCode</servlet-name>
+            <servlet-class>csu.web.mypetstore.domain.VerificationCode</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>VerificationCode</servlet-name>
+            <url-pattern>/verificationCode</url-pattern>
+        </servlet-mapping>
+
+    <!--日志检验-->
+        <servlet>
+            <servlet-name>InitLogServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.InitLogServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>InitLogServlet</servlet-name>
+            <url-pattern>/initLog</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>LogServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.LogServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>LogServlet</servlet-name>
+            <url-pattern>/logServlet</url-pattern>
+        </servlet-mapping>
+
+        <servlet>
+            <servlet-name>SearchProductServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.SearchProductServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>SearchProductServlet</servlet-name>
+            <url-pattern>/searchProduct</url-pattern>
+        </servlet-mapping>
+
 </web-app>
