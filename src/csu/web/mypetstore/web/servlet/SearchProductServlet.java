@@ -27,6 +27,7 @@ public class SearchProductServlet extends HttpServlet {
         //保存数据
         HttpSession session = req.getSession();
         session.setAttribute("keyword", keyword);
+
         session.setAttribute("productList", productList);
 
         Account account = (Account)session.getAttribute("account");
