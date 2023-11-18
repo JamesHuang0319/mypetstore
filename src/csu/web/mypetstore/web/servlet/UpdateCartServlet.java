@@ -1,7 +1,9 @@
 package csu.web.mypetstore.web.servlet;
 
+import csu.web.mypetstore.domain.Account;
 import csu.web.mypetstore.domain.Cart;
 import csu.web.mypetstore.domain.CartItem;
+import csu.web.mypetstore.service.LogService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,6 +37,17 @@ public class UpdateCartServlet extends HttpServlet {
             } catch (Exception e) {
                 //ignore parse exceptions on purpose
             }
+        }
+        Account account = (Account)session.getAttribute("loginAccount");
+
+        if(account != null){
+            HttpServletRequest httpRequest= req;
+            String strBackUrl = "http://" + req.getServerName() + ":" + req.getServerPort()
+                    + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());
+
+            LogService logService = new LogService();
+            String logInfo = logService.logInfo(" ") + strBackUrl + " 更新购物车商品数量";
+            logService.insertLogInfo(account.getUsername(), logInfo);
         }
 
         req.getRequestDispatcher(CART_FORM).forward(req,resp);

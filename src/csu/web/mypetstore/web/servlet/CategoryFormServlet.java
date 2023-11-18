@@ -1,8 +1,10 @@
 package csu.web.mypetstore.web.servlet;
 
+import csu.web.mypetstore.domain.Account;
 import csu.web.mypetstore.domain.Category;
 import csu.web.mypetstore.domain.Product;
 import csu.web.mypetstore.service.CatalogService;
+import csu.web.mypetstore.service.LogService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -25,6 +27,19 @@ public class CategoryFormServlet extends HttpServlet{
         HttpSession session = req.getSession();
         session.setAttribute("category" , category);
         session.setAttribute("productList" , productList);
+
+        Account account = (Account)session.getAttribute("loginAccount");
+
+        if(account != null){
+            HttpServletRequest httpRequest= req;
+            String strBackUrl = "http://" + req.getServerName() + ":" + req.getServerPort()
+                    + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());
+
+            LogService logService = new LogService();
+            String logInfo = logService.logInfo(" ") + strBackUrl + " 跳转到商品种类 " + category;
+            logService.insertLogInfo(account.getUsername(), logInfo);
+        }
+
         req.getRequestDispatcher(CATEGORY_FORM).forward(req,resp);
     }
 }

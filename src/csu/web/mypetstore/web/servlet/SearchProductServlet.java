@@ -30,7 +30,7 @@ public class SearchProductServlet extends HttpServlet {
 
         session.setAttribute("productList", productList);
 
-        Account account = (Account)session.getAttribute("account");
+        Account account = (Account)session.getAttribute("loginAccount");
 
         if(account != null){
             HttpServletRequest httpRequest= req;

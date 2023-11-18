@@ -1,8 +1,10 @@
 package csu.web.mypetstore.web.servlet;
 
+import csu.web.mypetstore.domain.Account;
 import csu.web.mypetstore.domain.Item;
 import csu.web.mypetstore.domain.Product;
 import csu.web.mypetstore.service.CatalogService;
+import csu.web.mypetstore.service.LogService;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,8 +26,20 @@ public class ItemFormServlet extends HttpServlet {
 
         HttpSession session = req.getSession();
         session.setAttribute("product", product);
-        //有漏洞建议改成request 实验一 5  45mins
         session.setAttribute("item", item);
+
+        Account account = (Account)session.getAttribute("loginaAccount");
+
+        if(account != null){
+            HttpServletRequest httpRequest= req;
+            String strBackUrl = "http://" + req.getServerName() + ":" + req.getServerPort()
+                    + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());
+
+            LogService logService = new LogService();
+            String logInfo = logService.logInfo(" ") + strBackUrl + " 查看具体商品 " + item;
+            logService.insertLogInfo(account.getUsername(), logInfo);
+        }
+
         req.getRequestDispatcher(ITEM_FORM).forward(req, resp);
     }
 }
