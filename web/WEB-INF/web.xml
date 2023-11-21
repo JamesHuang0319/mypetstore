@@ -96,15 +96,6 @@
             <url-pattern>/signOn</url-pattern>
         </servlet-mapping>
 
-        <servlet>
-            <servlet-name>NewOrderFormServlet</servlet-name>
-            <servlet-class>csu.web.mypetstore.web.servlet.NewOrderFormServlet</servlet-class>
-        </servlet>
-        <servlet-mapping>
-            <servlet-name>NewOrderFormServlet</servlet-name>
-            <url-pattern>/newOrderForm</url-pattern>
-        </servlet-mapping>
-
         <!--注册表单-->
         <servlet>
             <servlet-name>NewAccountFormServlet</servlet-name>
@@ -155,7 +146,7 @@
             <url-pattern>/verificationCode</url-pattern>
         </servlet-mapping>
 
-    <!--日志检验-->
+        <!--日志检验-->
         <servlet>
             <servlet-name>InitLogServlet</servlet-name>
             <servlet-class>csu.web.mypetstore.web.servlet.InitLogServlet</servlet-class>
@@ -174,6 +165,7 @@
             <url-pattern>/logServlet</url-pattern>
         </servlet-mapping>
 
+        <!--搜寻宠物列表-->
         <servlet>
             <servlet-name>SearchProductServlet</servlet-name>
             <servlet-class>csu.web.mypetstore.web.servlet.SearchProductServlet</servlet-class>
@@ -181,6 +173,85 @@
         <servlet-mapping>
             <servlet-name>SearchProductServlet</servlet-name>
             <url-pattern>/searchProduct</url-pattern>
+        </servlet-mapping>
+
+        <!--跳转到生成订单表-->
+        <servlet>
+            <servlet-name>NewOrderFormServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.NewOrderFormServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>NewOrderFormServlet</servlet-name>
+            <url-pattern>/newOrderForm</url-pattern>
+        </servlet-mapping>
+
+        <!--跳往到确定订单-->
+        <servlet>
+            <servlet-name>ConfirmOrderFormServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.ConfirmOrderFormServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>ConfirmOrderFormServlet</servlet-name>
+            <url-pattern>/conFirmOrderForm</url-pattern>
+        </servlet-mapping>
+
+        <!--查看最终订单-->
+        <servlet>
+            <servlet-name>ViewOrderServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.ViewOrderServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>ViewOrderServlet</servlet-name>
+            <url-pattern>/viewOrder</url-pattern>
+        </servlet-mapping>
+        <!--跳1-->
+        <servlet>
+            <servlet-name>ShippingFormServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.ShippingFormServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>ShippingFormServlet</servlet-name>
+            <url-pattern>/shippingForm</url-pattern>
+        </servlet-mapping>
+
+        <!--查看订单列表-->
+        <servlet>
+            <servlet-name>ViewListOrderServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.ViewListOrderServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>ViewListOrderServlet</servlet-name>
+            <url-pattern>/viewListOrder</url-pattern>
+        </servlet-mapping>
+
+        <!--ajax商品搜索自动补全-->
+        <servlet>
+            <servlet-name>ProductAutoCompleteServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.ProductAutoCompleteServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>ProductAutoCompleteServlet</servlet-name>
+            <url-pattern>/productAuto</url-pattern>
+        </servlet-mapping>
+
+        <!--ajax商品搜索自动补全-->
+        <servlet>
+            <servlet-name>UsernameCheckServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.UsernameCheckServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>UsernameCheckServlet</servlet-name>
+            <url-pattern>/usernameCheck</url-pattern>
+        </servlet-mapping>
+
+        <!--ajax商品搜索自动补全-->
+        <servlet>
+            <servlet-name>UpdateCartQuantityAJAXServlet</servlet-name>
+            <servlet-class>csu.web.mypetstore.web.servlet.UpdateCartQuantityAJAXServlet</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>UpdateCartQuantityAJAXServlet</servlet-name>
+            <url-pattern>/updateCartQuantityAJAX</url-pattern>
         </servlet-mapping>
 
 </web-app>

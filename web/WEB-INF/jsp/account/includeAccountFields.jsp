@@ -9,10 +9,10 @@
         <td>Last name:</td>
         <td><input type="text" name="lastName" value="${sessionScope.account.lastName}"/></td>
     </tr>
-    <!-- <tr>
+    <tr>
         <td>Email:</td>
-        <td><input type="text" size="40" name="email" value="${sessionScope.account.email}" /></td>
-    </tr> -->
+        <td><input type="text" size="40" name="email" value="${sessionScope.account.email}" /><input type="submit" formaction="send_code" name="seng" value="send code to my email" /></td>
+    </tr>
 
     <tr>
         <td>Phone:</td>

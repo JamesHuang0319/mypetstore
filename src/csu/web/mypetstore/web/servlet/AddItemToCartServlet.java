@@ -35,6 +35,7 @@ public class AddItemToCartServlet extends HttpServlet  {
             cart.incrementQuantityByItemId(workingItemId);
             //已有该物品，数量加一
             if(account != null){
+                System.out.println("数量加一");
                 HttpServletRequest httpRequest= (HttpServletRequest) req;
                 String strBackUrl = "http://" + req.getServerName() + ":" + req.getServerPort()
                         + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());
@@ -51,6 +52,8 @@ public class AddItemToCartServlet extends HttpServlet  {
             cart.addItem(item, isInStock);
 
             if(account != null){
+                System.out.println( " 添加物品 " + item + " 到购物车");
+                System.out.println();
                 HttpServletRequest httpRequest= req;
                 String strBackUrl = "http://" + req.getServerName() + ":" + req.getServerPort()
                         + httpRequest.getContextPath() + httpRequest.getServletPath() + "?" + (httpRequest.getQueryString());

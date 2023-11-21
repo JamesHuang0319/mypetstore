@@ -35,6 +35,7 @@ public class SignOnServlet extends HttpServlet {
 
         session.setAttribute("loginAccount", loginAccount);
 
+
         if(loginAccount != null){
             HttpServletRequest httpRequest= req;
             String strBackUrl = "http://" + req.getServerName() + ":" + req.getServerPort()
@@ -100,5 +101,58 @@ public class SignOnServlet extends HttpServlet {
             return false;
         }
         return true;
+    }
+    public void checkRegisterUsername(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String username = req.getParameter("username");
+
+        String regExp = "^[a-zA-Z0-9_-]{4,16}$";
+        if (!username.matches(regExp)){
+            resp.getWriter().print("false");
+        }
+        else {
+            resp.getWriter().print("");
+        }
+    }
+    public void checkRegisterPassword(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+        String password = req.getParameter("password");
+        String regXp="^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{8,}$";
+        if (!password.matches(regXp)){
+            resp.getWriter().print("false");
+        }
+        else {
+            resp.getWriter().print("true");
+        }
+
+    }
+    public void checkRegisterPassword1(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+        String password = req.getParameter("password");
+        String password1 = req.getParameter("password1");
+        if (password.equals(password1)){
+            resp.getWriter().print("repeat");
+        }
+        else {
+            resp.getWriter().print("");
+        }
+    }
+    public void checkLoginUsername(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        String username = req.getParameter("username");
+
+
+        if (username==null){
+            resp.getWriter().print("null");
+        }
+        else {
+            resp.getWriter().print("");
+        }
+    }
+    public void checkLoginPassword(HttpServletRequest req,HttpServletResponse resp) throws IOException {
+        String password = req.getParameter("password");
+        String username = req.getParameter("username");
+        if (password==null){
+            resp.getWriter().print("null");
+        }
+        else {
+            resp.getWriter().print("");
+        }
     }
 }

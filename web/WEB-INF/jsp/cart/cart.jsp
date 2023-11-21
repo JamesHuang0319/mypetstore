@@ -41,12 +41,15 @@
                                 ${cartItem.item.attribute5} ${cartItem.item.product.name}</td>
                         <td>${cartItem.inStock}</td>
                         <td>
-                            <input type="text" name="${cartItem.item.itemId}" value="${cartItem.quantity}">
+                            <input type="text" id="quantity" name="${cartItem.item.itemId}" value="${cartItem.quantity}">
+
                         </td>
                         <td><fmt:formatNumber value="${cartItem.item.listPrice}"
                                               pattern="$#,##0.00" /></td>
-                        <td><fmt:formatNumber value="${cartItem.total}"
-                                              pattern="$#,##0.00" /></td>
+                        <td class="item-total"><fmt:formatNumber value="${cartItem.total}" pattern="$#,##0.00" /></td>
+
+<%--                        <td><fmt:formatNumber  value="${cartItem.total}"--%>
+<%--                                              pattern="$#,##0.00" /></td>--%>
                         <td>
                             <a href="removeCartItem?workingItemId=${cartItem.item.itemId}" class="Button">Remove</a>
                         </td>

@@ -1,26 +1,43 @@
 <%@ include file="../common/top.jsp"%>
+<div id = "topSignOn"></div>
+<div id="catalog">
+    <form id="loginForm" action="signOn" method="post">
+        <p id="signonTitle">Sign On Form</p>
 
-<div id="Catalog">
-    <form action="signOn" method="post">
-        <p>Please enter your username and password.</p>
         <c:if test="${requestScope.signOnMsg != null}">
-            <p> <font color="red">${requestScope.signOnMsg} </font> </p>
+            <p class="error-message"> <font color="red">${requestScope.signOnMsg}</font> </p>
         </c:if>
+
         <c:if test="${requestScope.isSame != true}">
-        <h><font color="red">${sessionScope.vsignOnMsg}</font></h>
+            <p class="error-message"><font color="red">${sessionScope.vsignOnMsg}</font></p>
         </c:if>
 
-        <p>
-            Username:<input type="text" name="username"> <br />
-            Password:<input type="password" name="password"><br />
-            VerificationCode:<input type="text" name="vCode" size="5" maxlength="4"/>
-            <a href="signOn"><img border="0" src="verificationCode" name="checkcode"></a>
-        </p>
-        <input type="submit" value="Login">
-    </form>
-    Need a user name and password?
-    <a href="newAccountForm">Register Now!</a>
+        <div class="form-field">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username">
+        </div>
 
+        <div class="form-field">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password">
+        </div>
+
+        <div class="form-field">
+            <label for="vCode">VerificationCode:</label>
+            <input type="text" id="vCode" name="vCode" size="5" maxlength="4"/>
+            <img border="0" src="verificationCode" alt="Verification Code" class="verification-code">
+<%--            <a href="signOn"></a>--%>
+        </div>
+
+        <input type="submit" class="login-button" value="Login">
+    </form>
+
+    <p class="register-prompt">
+        Need a user name and password?
+        <a href="newAccountForm">Register Now!</a>
+    </p>
 </div>
+<div id = "bottomSignOn"></div>
+
 
 <%@ include file="../common/bottom.jsp"%>

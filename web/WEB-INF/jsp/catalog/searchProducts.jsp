@@ -1,7 +1,7 @@
 <%@ include file="../common/top.jsp"%>
 
 <div id="BackLink">
-    <a href="main">Return to Main Menu</a>
+    <a href="mainForm">Return to Main Menu</a>
 </div>
 
 <div id="Catalog">
@@ -15,10 +15,10 @@
         <c:forEach var="product" items="${sessionScope.productList}">
             <tr>
                 <td>
-                    <a href="viewProduct?productId=${product.productId}">${product.description}</a>
+                    <a href="productForm?productId=${product.productId}">${product.description}</a>
                 </td>
                 <td><b>
-                    <a href="viewProduct?productId=${product.productId}">${product.productId}</a>
+                    <a href="productForm?productId=${product.productId}">${product.productId}</a>
                 </b>
                 </td>
                 <td>${product.name}</td>

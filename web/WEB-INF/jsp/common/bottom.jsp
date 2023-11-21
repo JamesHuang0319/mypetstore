@@ -16,5 +16,9 @@
 
 </div>
 
+<script src="js/productAuto.js"></script>
+<script src="js/register.js"></script>
+<script src="js/updateCart.js"></script>
+
 </body>
 </html>

@@ -4,7 +4,8 @@ import java.io.Serializable;
 
 public class Account implements Serializable {
     private static final long serialVersionUID = 8751282105532159742L;
-
+    //邮箱
+    private String repeatedPassword;
     private String username;
     private String password;
 
@@ -42,7 +43,13 @@ public class Account implements Serializable {
         this.password = password;
     }
 
+    public void setRepeatedPassword(String repeatedPassword) {
+        this.repeatedPassword = repeatedPassword;
+    }
 
+    public String getRepeatedPassword() {
+        return repeatedPassword;
+    }
 
     public String getFirstName() {
         return firstName;
